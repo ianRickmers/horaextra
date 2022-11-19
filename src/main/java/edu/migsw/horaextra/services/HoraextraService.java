@@ -67,13 +67,13 @@ public class HoraextraService {
 
     public String calcularHorasExtra(){
         horaextrasRepository.deleteAll();
-        Empleado[] empleados=restTemplate.getForObject("http://localhost:8011/empleado", Empleado[].class);
+        Empleado[] empleados=restTemplate.getForObject("http://sueldo-service/empleado", Empleado[].class);
         if(empleados==null){
             return "No hay empleados";
         }
         for(Empleado empleado:empleados){
             String rut=empleado.getRut();
-            Marca[] marcasRut=restTemplate.getForObject("http://localhost:8008/marcas/byrut/"+rut, Marca[].class);
+            Marca[] marcasRut=restTemplate.getForObject("http://marca-service/marcas/byrut/"+rut, Marca[].class);
             if(marcasRut==null){
                 return "No hay marcas";
             }
