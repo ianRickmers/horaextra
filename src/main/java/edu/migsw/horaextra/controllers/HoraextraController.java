@@ -11,7 +11,6 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/horaextra")
-@CrossOrigin("http://localhost:3000")
 public class HoraextraController {
     
     @Autowired
@@ -54,5 +53,11 @@ public class HoraextraController {
     public ResponseEntity<String> calcular(){
         String msg=HoraextraService.calcularHorasExtra();
         return ResponseEntity.ok(msg);
+    }
+
+    @PutMapping("/update/{rut}")
+    public ResponseEntity<String> update(@PathVariable("rut") String rut){
+        HoraextraService.autorizarHorasExtra(rut);
+        return ResponseEntity.ok("ok");
     }
 }

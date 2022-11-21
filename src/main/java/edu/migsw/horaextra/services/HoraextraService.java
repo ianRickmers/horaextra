@@ -1,5 +1,6 @@
 package edu.migsw.horaextra.services;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 import org.springframework.stereotype.Service;
@@ -24,7 +25,9 @@ public class HoraextraService {
     public void deleteAll() {
         horaextrasRepository.deleteAll();
     }
-    
+    public void update(HoraextraEntity horaextra) {
+        horaextrasRepository.save(horaextra);
+    }
     public List<HoraextraEntity> getAll() {
         return horaextrasRepository.findAll();
     }
@@ -87,5 +90,24 @@ public class HoraextraService {
                 }
             }
         return("Horas extra calculadas");
+    }
+
+    //cambiar autorizacion
+    public String autorizarHorasExtra(String rut){
+        ArrayList<HoraextraEntity> horaExtra = horaextrasRepository.findByRut(rut);
+        if(horaExtra!=null){
+            for(HoraextraEntity hora:horaExtra){
+                if(hora.getAutorizada()==0){
+                    hora.setAutorizada(1);
+                    horaextrasRepository.save(hora);
+                }
+                else{
+                    hora.setAutorizada(0);
+                    horaextrasRepository.save(hora);
+                }
+            }
+            return("Horas extra autorizadas");
+        }
+        return("Horas extra no encontradas");
     }
 }
