@@ -1,8 +1,0 @@
-edu/migsw/horaextra/models/Marca.class
-edu/migsw/horaextra/models/Empleado.class
-edu/migsw/horaextra/services/HoraextraService.class
-edu/migsw/horaextra/config/RestTemplateConfig.class
-edu/migsw/horaextra/repositories/HoraextraRepository.class
-edu/migsw/horaextra/HoraextraApplication.class
-edu/migsw/horaextra/controllers/HoraextraController.class
-edu/migsw/horaextra/entities/HoraextraEntity.class
