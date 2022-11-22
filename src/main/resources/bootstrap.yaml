@@ -10,6 +10,13 @@ spring:
         maxAttempts: 200
         maxInterval: 10000
       uri: http://localhost:8180
+  datasource:
+    url: ${DB_URL}
+    username: ${DB_USERNAME}
+    password: ${DB_PASSWORD}
+  jpa:
+    hibernate:
+      ddl-auto: update  
   # datasource:
   #   url: jdbc:mysql://localhost:3306/bdhorasextra
   #   username: root
